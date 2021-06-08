@@ -1,15 +1,8 @@
 import "./App.css";
 import nftData from "./data.js";
+import NftList from "./components/NftList";
 
 function App() {
-  const nftList = nftData.map((nft) => (
-    <div className="listElements" key={nft.id}>
-      <img className="listImages" src={nft.image} />
-      <p>{nft.name}</p>
-      <p>{nft.price}</p>
-    </div>
-  ));
-
   return (
     <div>
       <div>
@@ -21,7 +14,10 @@ function App() {
           src="https://www.forbes.com/advisor/wp-content/uploads/2021/04/NFT.jpeg-900x510.jpg"
         />
       </div>
-      <div>{nftList}</div>
+      <div>
+        <h2>Hall of Fame</h2>
+        <NftList />;
+      </div>
     </div>
   );
 }
