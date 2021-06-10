@@ -1,11 +1,13 @@
+// import nftData from "../data";
+import { NftWrapper } from "../styles";
 const NftItem = (props) => {
   return (
-    <div className="listElements" key={props.id}>
+    <NftWrapper key={props.id}>
       <img className="listImages" src={props.image} />
-      <p>{props.name}</p>
+      <p className="nftDescription">{props.name}</p>
 
-      <p className="priice">{props.price}</p>
-    </div>
+      <p className="price">{props.price}</p>
+    </NftWrapper>
   );
 };
 export default NftItem;
