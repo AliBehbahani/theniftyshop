@@ -1,5 +1,5 @@
 import "./App.css";
-// import nftData from "./data.js";
+
 import NftList from "./components/NftList";
 import { ThemeProvider } from "styled-components";
 import {

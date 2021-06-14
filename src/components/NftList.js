@@ -9,13 +9,7 @@ const NftList = (props) => {
     nft.name.toLowerCase().includes(query.toLowerCase())
   );
   const nftList = filterNfts.map((nft) => (
-    <NftItem
-      id={nft.id}
-      image={nft.image}
-      name={nft.name}
-      price={nft.price}
-      setNft={props.setNft}
-    />
+    <NftItem nft={nft} setNft={props.setNft} />
   ));
   return (
     <div>

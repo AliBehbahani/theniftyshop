@@ -2,8 +2,13 @@
 import { NftWrapper } from "../styles";
 const NftItem = (props) => {
   return (
-    <NftWrapper key={props.nft.id} onClick={() => props.setNft(props.nft)}>
-      <img className="listImages" src={props.nft.image} alt={props.nft.name} />
+    <NftWrapper key={props.nft.id}>
+      <img
+        className="listImages"
+        src={props.nft.image}
+        alt={props.nft.name}
+        onClick={() => props.setNft(props.nft)}
+      />
       <p className="nftDescription">{props.nft.name}</p>
 
       <p className="price">{props.nft.price}</p>
