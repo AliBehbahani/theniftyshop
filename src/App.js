@@ -26,12 +26,13 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("dark");
   const [nft, setNft] = useState(nftData[null]);
+
   const toggleCurrentTheme = () => {
     if (currentTheme === "dark") setCurrentTheme("light");
     else setCurrentTheme("dark");
   };
   const NftView = () => {
-    if (nft) return <NftDetail nft={nft}></NftDetail>;
+    if (nft) return <NftDetail nft={nft} setNft={setNft}></NftDetail>;
     else return <NftList setNft={setNft} />;
   };
 

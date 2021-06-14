@@ -7,6 +7,7 @@ const NftDetail = (props) => {
       <p>{props.nft.name}</p>
       <p>{props.nft.price}</p>
       <p>{props.nft.description}</p>
+      <button onClick={() => props.setNft(null)}>Back</button>
     </DetailWrapper>
   );
 };
