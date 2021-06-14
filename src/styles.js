@@ -1,20 +1,22 @@
 import styled from "styled-components";
+import SearchBar from "./components/SearchBar";
 import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
-body{
-    background-color:${(prop) => prop.theme.backgroundColor};
+body{  color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+    
     }
 `;
 export const Title = styled.h1`
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  color: white;
+  ${"" /* color: white; */}
   font-size: 40px;
 `;
 export const Description = styled.h4`
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  color: white;
+  ${"" /* color: white; */}
   font-size: 20px;
   margin-top: -25px;
 `;
@@ -27,7 +29,7 @@ export const ShopImage = styled.img`
 `;
 export const ListHeader = styled.h2`
   font-size: 40px;
-  color: white;
+  ${"" /* color: white; */}
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   border: 5px solid rgb(168, 24, 168);
@@ -46,14 +48,32 @@ export const NftWrapper = styled.div`
     font-size: 20px;
     margin-top: 160px;
     margin-left: 7%%;
-    color: white;
+    ${"" /* color: white; */}
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   }
   .nftDescription {
     font-size: 20px;
     margin-top: 160px;
     margin-left: 10%;
-    color: white;
+    ${"" /* color: white; */}
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+`;
+export const ToggleButton = styled.button``;
+
+export const SearchBarStyled = styled.input``;
+
+export const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  img {
+    width: 40%;
+    float: left;
+  }
+  p {
+    vertical-align: middle;
   }
 `;
