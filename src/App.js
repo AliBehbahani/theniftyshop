@@ -26,14 +26,23 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("dark");
   const [nft, setNft] = useState(nftData[null]);
+  const [_nfts, setNfts] = useState(nftData);
+  const nftDelete = (nftId) => {
+    const undeletedNfts = _nfts.filter((nft) => nft.id !== nftId);
+    setNfts(undeletedNfts);
+  };
 
   const toggleCurrentTheme = () => {
     if (currentTheme === "dark") setCurrentTheme("light");
     else setCurrentTheme("dark");
   };
   const NftView = () => {
-    if (nft) return <NftDetail nft={nft} setNft={setNft}></NftDetail>;
-    else return <NftList setNft={setNft} />;
+    if (nft)
+      return (
+        <NftDetail nft={nft} setNft={setNft} nftDelete={nftDelete}></NftDetail>
+      );
+    else
+      return <NftList setNft={setNft} nftDelete={nftDelete} nftData={_nfts} />;
   };
 
   return (

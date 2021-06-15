@@ -1,9 +1,7 @@
 // import nftData from "../data";
 import { NftWrapper } from "../styles";
+import DeleteButton from "./buttons/DeleteButton";
 const NftItem = (props) => {
-  const handleDelete = () => {
-    props.nftDelete(props.nft.id);
-  };
   return (
     <NftWrapper key={props.nft.id}>
       <img
@@ -15,7 +13,11 @@ const NftItem = (props) => {
       <p className="nftDescription">{props.nft.name}</p>
 
       <p className="price">{props.nft.price}</p>
-      <p onClick={handleDelete}>Delete</p>
+      <DeleteButton
+        nftDelete={props.nftDelete}
+        nftId={props.nft.id}
+        setNft={props.setNft}
+      />
     </NftWrapper>
   );
 };
