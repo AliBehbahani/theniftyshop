@@ -3,6 +3,7 @@ import NftItem from "./NftItems.js";
 import SearchBar from "./SearchBar.js";
 import { NftWrapper } from "../styles";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 const NftList = (props) => {
   const [query, setQuery] = useState("");
 
@@ -14,8 +15,13 @@ const NftList = (props) => {
   ));
   return (
     <div>
-      <SearchBar setQuery={setQuery} />
-      <NftWrapper>{nftList}</NftWrapper>
+      <Helmet>
+        <title>Products</title>
+      </Helmet>
+      <div>
+        <SearchBar setQuery={setQuery} />
+        <NftWrapper>{nftList}</NftWrapper>
+      </div>
     </div>
   );
 };

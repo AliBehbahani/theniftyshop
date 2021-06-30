@@ -1,26 +1,28 @@
 import "./App.css";
 
+import HomePage from "./home";
+import NavBar from "./components/NavBar";
+
 import NftList from "./components/NftList";
 import { ThemeProvider } from "styled-components";
-import {
-  Title,
-  Description,
-  ShopImage,
-  ListHeader,
-  GlobalStyle,
-  ToggleButton,
-} from "./styles";
+import { ListHeader, GlobalStyle, ToggleButton, NavProducts } from "./styles";
 import { useState } from "react";
 import NftDetail from "./components/NftDetail";
 import nftData from "./data";
+
+import { Route, Switch } from "react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const theme = {
   light: {
     backgroundColor: "white",
     mainColor: "black",
+    red: "red",
   },
   dark: {
     backgroundColor: "black",
     mainColor: "white",
+    red: "red",
   },
 };
 function App() {
@@ -48,21 +50,27 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <div>
-        <ToggleButton id="1" onClick={toggleCurrentTheme}>
-          {currentTheme === "light" ? "Dark" : "Light"}mode
-        </ToggleButton>
-        <Title>The NiFTy Shop</Title>
-        <Description>your go to NFT shop</Description>
-        <ShopImage
-          alt="nft"
-          src="https://www.forbes.com/advisor/wp-content/uploads/2021/04/NFT.jpeg-900x510.jpg"
-        />
-      </div>
-      <div>
-        <ListHeader>Hall of Fame</ListHeader>
-        {NftView()}
-      </div>
+      <NavBar
+        toggleCurrentTheme={toggleCurrentTheme}
+        currentTheme={currentTheme}
+      />
+      <Helmet>
+        <title>Home Page</title>
+      </Helmet>
+
+      <Switch>
+        <Route path="/products/:nftSlug">
+          <NftDetail nftData={_nfts} setNft={setNft} nftDelete={nftDelete} />
+        </Route>
+        <Route path="/products">
+          {/* <ListHeader>Hall of Fame</ListHeader> */}
+          {/* {NftView()} */}
+          <NftList nftDelete={nftDelete} nftData={_nfts} setNft={setNft} />
+        </Route>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+      </Switch>
     </ThemeProvider>
   );
 }
