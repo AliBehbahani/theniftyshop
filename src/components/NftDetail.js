@@ -2,9 +2,11 @@ import { DetailWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
 import { useParams, Redirect, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-const NftDetail = (props) => {
+import nftStore from "../stores/nftStore";
+import { observer } from "mobx-react";
+const NftDetail = () => {
   const nftSlug = useParams().nftSlug;
-  const nft = props.nftData.find((nft) => nft.slug === nftSlug);
+  const nft = nftStore.nfts.find((nft) => nft.slug === nftSlug);
   if (!nft) return <Redirect to="/products" />;
 
   return (
@@ -18,13 +20,9 @@ const NftDetail = (props) => {
         <p>{nft.price}</p>
         <p>{nft.description}</p>
         <Link to="/products">Back</Link>
-        <DeleteButton
-          nftDelete={props.nftDelete}
-          nftId={nft.id}
-          setNft={props.setNft}
-        />
+        <DeleteButton nftId={nft.id} />
       </DetailWrapper>
     </div>
   );
 };
-export default NftDetail;
+export default observer(NftDetail);

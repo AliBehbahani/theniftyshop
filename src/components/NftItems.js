@@ -16,11 +16,7 @@ const NftItem = (props) => {
       <p className="nftDescription">{props.nft.name}</p>
 
       <p className="price">{props.nft.price}</p>
-      <DeleteButton
-        nftDelete={props.nftDelete}
-        nftId={props.nft.id}
-        setNft={props.setNft}
-      />
+      <DeleteButton nftId={props.nft.id} />
     </NftWrapper>
   );
 };

@@ -4,15 +4,15 @@ import SearchBar from "./SearchBar.js";
 import { NftWrapper } from "../styles";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-const NftList = (props) => {
+import nftStore from "../stores/nftStore.js";
+import { observer } from "mobx-react";
+const NftList = () => {
   const [query, setQuery] = useState("");
 
-  const filterNfts = props.nftData.filter((nft) =>
+  const filterNfts = nftStore.nfts.filter((nft) =>
     nft.name.toLowerCase().includes(query.toLowerCase())
   );
-  const nftList = filterNfts.map((nft) => (
-    <NftItem nft={nft} setNft={props.setNft} nftDelete={props.nftDelete} />
-  ));
+  const nftList = filterNfts.map((nft) => <NftItem nft={nft} />);
   return (
     <div>
       <Helmet>
@@ -26,4 +26,4 @@ const NftList = (props) => {
   );
 };
 
-export default NftList;
+export default observer(NftList);
