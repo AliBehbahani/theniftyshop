@@ -3,7 +3,8 @@ import SearchBar from "./components/SearchBar";
 import { createGlobalStyle } from "styled-components";
 import DeleteButton from "./components/buttons/DeleteButton";
 import { NavLink, Link } from "react-router-dom";
-
+import { BiAddToQueue } from "react-icons/bi";
+import AddButton from "./components/buttons/AddButton";
 export const GlobalStyle = createGlobalStyle`
 body{  color: ${(props) => props.theme.mainColor};
     background-color: ${(props) => props.theme.backgroundColor};
@@ -104,4 +105,15 @@ export const DeleteButtonStyled = styled.button`
   width: 150px;
   height: 35px;
   border: 5px solid red;
+`;
+
+export const AddButtonStyled = styled(BiAddToQueue)`
+  color: ${(props) => props.theme.mainColor};
+  width: 50px;
+  float: left;
+  margin-left: 30px;
+  padding: 10px;
+`;
+export const UpdateButtonStyled = styled.p`
+  font-size: 15px;
 `;

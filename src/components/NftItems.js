@@ -2,6 +2,8 @@
 import { NftWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
 import { Link } from "react-router-dom";
+import UpdateButton from "./buttons/UpdateButton";
+import { observer } from "mobx-react";
 const NftItem = (props) => {
   return (
     <NftWrapper key={props.nft.id}>
@@ -15,9 +17,10 @@ const NftItem = (props) => {
 
       <p className="nftDescription">{props.nft.name}</p>
 
-      <p className="price">{props.nft.price}</p>
+      <p className="price">{props.nft.price}$</p>
+      <UpdateButton nft={props.nft} />
       <DeleteButton nftId={props.nft.id} />
     </NftWrapper>
   );
 };
-export default NftItem;
+export default observer(NftItem);
