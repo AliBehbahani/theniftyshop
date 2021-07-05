@@ -27,19 +27,27 @@ class NftStore {
     }
   };
 
-  nftCreate = (newNft) => {
-    this.nfts.push(newNft);
-    newNft.id = this.nfts.length + 1;
-    newNft.slug = slugify(newNft.name);
+  nftCreate = async (newNft) => {
+    try {
+      const response = await axios.post("http://localhost:8000/nfts", newNft);
+      this.nfts.push(response.data);
+    } catch (error) {
+      console.error("createNfts:", error);
+    }
   };
 
-  nftUpdate = (updateNft) => {
-    const nft = this.nfts.find((nft) => nft.id === updateNft.id);
-    nft.slug = slugify(updateNft.name);
-    nft.name = updateNft.name;
-    nft.price = updateNft.price;
-    nft.description = updateNft.description;
-    nft.image = updateNft.image;
+  nftUpdate = async (updateNft) => {
+    try {
+      await axios.put(`http://localhost:8000/nfts/${updateNft.id}`, updateNft);
+      const nft = this.nfts.find((nft) => nft.id === updateNft.id);
+      nft.slug = slugify(updateNft.name);
+      nft.name = updateNft.name;
+      nft.price = updateNft.price;
+      nft.description = updateNft.description;
+      nft.image = updateNft.image;
+    } catch (error) {
+      console.error("updateNfts:", error);
+    }
   };
 }
 const nftStore = new NftStore();
