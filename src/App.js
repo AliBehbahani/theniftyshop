@@ -42,10 +42,10 @@ function App() {
         <title>Home Page</title>
       </Helmet>
       <Switch>
-        <Route path="/products/:nftSlug">
+        <Route path="/nfts/:nftSlug">
           <NftDetail />
         </Route>
-        <Route path="/products">
+        <Route path="/nfts">
           <NftList />
         </Route>
         <Route exact path="/">
