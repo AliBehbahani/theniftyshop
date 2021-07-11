@@ -9,6 +9,7 @@ import nftStore from "../stores/nftStore";
 const Routes = () => {
   return (
     <Switch>
+      <Route path="/signup" />
       <Route path="/nfts/:nftSlug">
         <NftDetail />
       </Route>
