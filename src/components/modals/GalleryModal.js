@@ -1,20 +1,14 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import nftStore from "../../stores/nftStore";
+import galleryStore from "../../stores/galleryStore";
 
-const NftModal = (props) => {
-  const [nft, setNft] = useState(
-    props.oldNft
-      ? props.oldNft
-      : {
-          name: "",
-          price: 0,
-          description: "",
-          image: "",
-        }
-  );
+const GalleryModal = (props) => {
+  const [gallery, setGallery] = useState({
+    name: "",
+    image: "",
+  });
   const handleChange = (event) => {
-    setNft({ ...nft, [event.target.name]: event.target.value });
+    setGallery({ ...nft, [event.target.name]: event.target.value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -98,4 +92,4 @@ const NftModal = (props) => {
   );
 };
 
-export default NftModal;
+export default GalleryModal;

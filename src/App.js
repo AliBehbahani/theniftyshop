@@ -1,17 +1,18 @@
 import "./App.css";
 
-import HomePage from "./home";
 import NavBar from "./components/NavBar";
 
-import NftList from "./components/NftList";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles";
 import { useState } from "react";
-import NftDetail from "./components/NftDetail";
+import Routes from "./components/Routes";
 
-import { Route, Switch } from "react-router";
+import galleryStore from "./stores/galleryStore";
+import nftStore from "./stores/nftStore";
 
+import { observer } from "mobx-react";
 import { Helmet } from "react-helmet";
+
 const theme = {
   light: {
     backgroundColor: "white",
@@ -41,19 +42,13 @@ function App() {
       <Helmet>
         <title>Home Page</title>
       </Helmet>
-      <Switch>
-        <Route path="/nfts/:nftSlug">
-          <NftDetail />
-        </Route>
-        <Route path="/nfts">
-          <NftList />
-        </Route>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-      </Switch>
+      {galleryStore.loading || nftStore.loading ? (
+        <h1>plz wait ....</h1>
+      ) : (
+        <Routes />
+      )}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);

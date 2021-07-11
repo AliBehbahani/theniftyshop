@@ -117,3 +117,9 @@ export const AddButtonStyled = styled(BiAddToQueue)`
 export const UpdateButtonStyled = styled.p`
   font-size: 15px;
 `;
+//========
+
+export const GalleryImages = styled.img`
+  width: 200px;
+  float: left;
+`;

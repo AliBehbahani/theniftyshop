@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 const NftItem = (props) => {
   return (
     <NftWrapper key={props.nft.id}>
-      <Link to={`/products/${props.nft.slug}`}>
+      <Link to={`/nfts/${props.nft.slug}`}>
         <img
           className="listImages"
           src={props.nft.image}

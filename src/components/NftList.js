@@ -4,20 +4,20 @@ import SearchBar from "./SearchBar.js";
 import { NftWrapper } from "../styles";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import nftStore from "../stores/nftStore.js";
+
 import { observer } from "mobx-react";
 
 import { AddButtonStyled } from "../styles";
 import NftModal from "./modals/NftModal";
 
-const NftList = () => {
+const NftList = ({ nfts, gallery }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
 
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
-  const filterNfts = nftStore.nfts.filter((nft) =>
+  const filterNfts = nfts.filter((nft) =>
     nft.name.toLowerCase().includes(query.toLowerCase())
   );
   const nftList = filterNfts.map((nft) => <NftItem nft={nft} />);
@@ -30,7 +30,7 @@ const NftList = () => {
       <div>
         <SearchBar setQuery={setQuery} />
         <AddButtonStyled size="3em" onClick={openModal} />
-        <NftModal closeModal={closeModal} isOpen={isOpen} />
+        <NftModal closeModal={closeModal} isOpen={isOpen} gallery={gallery} />
         <NftWrapper>{nftList}</NftWrapper>
       </div>
     </div>

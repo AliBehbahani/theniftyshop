@@ -8,7 +8,10 @@ const NavBar = (props) => {
           <img src="https://art.pixilart.com/39f4649a097fab9.gif" />
         </Logo>
         <NavProducts className="nav-item active" to="/nfts">
-          Products
+          nfts
+        </NavProducts>
+        <NavProducts className="nav-item active" to="/galleries">
+          galleries
         </NavProducts>
         <ToggleButton
           className="nav-item"
