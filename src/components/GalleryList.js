@@ -3,6 +3,7 @@ import GalleryItems from "./GalleryItems";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import { observer } from "mobx-react";
+import authStore from "../stores/authStore";
 const GalleryList = () => {
   const [query, setQuery] = useState("");
   const galleries = galleryStore.galleries
@@ -15,6 +16,7 @@ const GalleryList = () => {
     <div>
       <h1>Galeries</h1>
       <SearchBar setQuery={setQuery} />
+      {/* {authStore.user&& ididnt do it yet } */}
 
       {galleries}
     </div>

@@ -10,6 +10,8 @@ import { observer } from "mobx-react";
 import { AddButtonStyled } from "../styles";
 import NftModal from "./modals/NftModal";
 
+import authStore from "../stores/authStore";
+
 const NftList = ({ nfts, gallery }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -29,7 +31,7 @@ const NftList = ({ nfts, gallery }) => {
       </Helmet>
       <div>
         <SearchBar setQuery={setQuery} />
-        <AddButtonStyled size="3em" onClick={openModal} />
+        {authStore.user && <AddButtonStyled size="3em" onClick={openModal} />}
         <NftModal closeModal={closeModal} isOpen={isOpen} gallery={gallery} />
         <NftWrapper>{nftList}</NftWrapper>
       </div>
