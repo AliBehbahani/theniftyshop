@@ -1,9 +1,12 @@
+//library imports
 import { Route, Switch } from "react-router";
-import NftDetail from "./NftDetail";
-import NftList from "./NftList";
-import GalleryDetail from "./GalleryDetail";
-import GalleryList from "./GalleryList";
+//components
+import NftDetail from "./nft/NftDetail";
+import NftList from "./nft/NftList";
+import GalleryDetail from "./gallery/GalleryDetail";
+import GalleryList from "./gallery/GalleryList";
 import HomePage from "../home";
+//stores
 import nftStore from "../stores/nftStore";
 
 const Routes = () => {

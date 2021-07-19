@@ -1,8 +1,12 @@
-import { NavProducts, NavBarStyled, ToggleButton, Logo } from "../styles";
-import SignupButton from "./buttons/SignupButton";
-import SigninButton from "./buttons/SigninButton";
+//library imports
 import { observer } from "mobx-react";
+//components
+import SigninButton from "./buttons/SigninButton";
+import SignupButton from "./buttons/SignupButton";
+//stores
 import authStore from "../stores/authStore";
+//styles
+import { NavProducts, NavBarStyled, ToggleButton, Logo } from "../styles";
 
 const NavBar = (props) => {
   return (
@@ -19,7 +23,10 @@ const NavBar = (props) => {
         </NavProducts>
 
         {authStore.user ? (
-          <p>welcome</p>
+          <>
+            <p>welcome</p>
+            <button onClick={authStore.signout}>sign out</button>
+          </>
         ) : (
           <>
             <SignupButton />

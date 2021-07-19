@@ -1,9 +1,14 @@
+//licrary imports
 import { useParams } from "react-router";
-import galleryStore from "../stores/galleryStore";
-import { DetailWrapper } from "../styles";
 import { observer } from "mobx-react";
-import NftList from "./NftList";
-import nftStore from "../stores/nftStore";
+//components
+import NftList from "../nft/NftList";
+//stores
+import nftStore from "../../stores/nftStore";
+import galleryStore from "../../stores/galleryStore";
+//styles
+import { DetailWrapper } from "../../styles";
+
 const GalleryDetail = () => {
   const { gallerySlug } = useParams();
   const gallery = galleryStore.galleries.find(

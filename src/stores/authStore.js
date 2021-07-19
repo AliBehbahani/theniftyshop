@@ -1,8 +1,10 @@
-// import nftData from "../data";
+//library imports
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
 import decode from "jwt-decode";
-class UserStore {
+//components
+import instance from "./instance";
+
+class AuthStore {
   user = null;
   constructor() {
     makeAutoObservable(this);
@@ -10,27 +12,49 @@ class UserStore {
 
   signup = async (newUser) => {
     try {
-      const response = await axios.post(
+      const response = await instance.post(
         "http://localhost:8000/signup",
         newUser
       );
-      this.user = decode(response.data.token);
+      this.setUser(response.data.token);
     } catch (error) {
       console.error("userCreate:", error);
     }
   };
   signin = async (userData) => {
     try {
-      const response = await axios.post(
+      const response = await instance.post(
         "http://localhost:8000/signin",
         userData
       );
-      this.user = decode(response.data.token);
+      this.setUser(response.data.token);
     } catch (error) {
       console.error("userSignin:", error);
     }
   };
-}
-const userStore = new UserStore();
+  setUser = (token) => {
+    localStorage.setItem("userToken", token);
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    this.user = decode(token);
+  };
 
-export default userStore;
+  signout = () => {
+    delete instance.defaults.headers.common.Authorization;
+    localStorage.removeItem("usertoken");
+    this.user = null;
+  };
+  checkToken = () => {
+    const token = localStorage.getItem("userToken");
+    if (token) {
+      const user = decode(token);
+      if (user.expires >= Date.now()) {
+        this.setUser(token);
+      } else {
+        this.signout();
+      }
+    }
+  };
+}
+const authStore = new AuthStore();
+authStore.checkToken();
+export default authStore;

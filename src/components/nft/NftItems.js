@@ -1,10 +1,14 @@
-// import nftData from "../data";
-import { NftWrapper } from "../styles";
-import DeleteButton from "./buttons/DeleteButton";
+//library imports
 import { Link } from "react-router-dom";
-import UpdateButton from "./buttons/UpdateButton";
 import { observer } from "mobx-react";
-import authStore from "../stores/authStore";
+//components
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton";
+//stores
+import authStore from "../../stores/authStore";
+//styles
+import { NftWrapper } from "../../styles";
+
 const NftItem = (props) => {
   return (
     <NftWrapper key={props.nft.id}>

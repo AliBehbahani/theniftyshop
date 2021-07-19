@@ -1,4 +1,6 @@
+//stores
 import nftStore from "../../stores/nftStore";
+//styles
 import { DeleteButtonStyled } from "../../styles";
 
 const DeleteButton = (props) => {

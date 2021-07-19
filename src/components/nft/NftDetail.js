@@ -1,9 +1,14 @@
-import { DetailWrapper } from "../styles";
-import DeleteButton from "./buttons/DeleteButton";
+//library imports
 import { useParams, Redirect, Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import nftStore from "../stores/nftStore";
 import { observer } from "mobx-react";
+import { Helmet } from "react-helmet";
+//components
+import DeleteButton from "../buttons/DeleteButton";
+//stores
+import nftStore from "../../stores/nftStore";
+//styles
+import { DetailWrapper } from "../../styles";
+
 const NftDetail = () => {
   const nftSlug = useParams().nftSlug;
   const nft = nftStore.nfts.find((nft) => nft.slug === nftSlug);

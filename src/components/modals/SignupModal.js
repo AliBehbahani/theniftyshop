@@ -1,5 +1,7 @@
+//library imports
 import Modal from "react-modal";
 import { useState } from "react";
+//stores
 import authStore from "../../stores/authStore";
 
 const SignupModal = (props) => {

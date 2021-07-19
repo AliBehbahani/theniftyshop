@@ -1,5 +1,7 @@
+//library imports
 import Modal from "react-modal";
 import { useState } from "react";
+//stores
 import nftStore from "../../stores/nftStore";
 
 const NftModal = (props) => {

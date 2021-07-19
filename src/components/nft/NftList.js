@@ -1,16 +1,15 @@
-//import nftData from "../data.js";
-import NftItem from "./NftItems.js";
-import SearchBar from "./SearchBar.js";
-import { NftWrapper } from "../styles";
+//library imports
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-
 import { observer } from "mobx-react";
-
-import { AddButtonStyled } from "../styles";
-import NftModal from "./modals/NftModal";
-
-import authStore from "../stores/authStore";
+//components
+import NftItem from "./NftItems.js";
+import SearchBar from "../SearchBar.js";
+import NftModal from "../modals/NftModal";
+//stores
+import authStore from "../../stores/authStore";
+//styles
+import { NftWrapper, AddButtonStyled } from "../../styles";
 
 const NftList = ({ nfts, gallery }) => {
   const [isOpen, setIsOpen] = useState(false);

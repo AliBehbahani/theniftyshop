@@ -1,7 +1,9 @@
-// import nftData from "../data";
+//library imports
 import { makeAutoObservable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
+//components
+import instance from "./instance";
+
 class NftStore {
   nfts = [];
   loading = true;
@@ -11,7 +13,7 @@ class NftStore {
   }
   fetchNfts = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/nfts");
+      const res = await instance.get("/nfts");
       this.nfts = res.data;
       this.loading = false;
     } catch (error) {
@@ -21,7 +23,7 @@ class NftStore {
 
   nftDelete = async (nftId) => {
     try {
-      await axios.delete(`http://localhost:8000/nfts/${nftId}`);
+      await instance.delete(`/nfts/${nftId}`);
       const undeletedNfts = this.nfts.filter((nft) => nft.id !== nftId);
       this.nfts = undeletedNfts;
     } catch (error) {
@@ -34,8 +36,8 @@ class NftStore {
       const formData = new FormData();
       for (const key in newNft) formData.append(key, newNft[key]);
 
-      const response = await axios.post(
-        `http://localhost:8000/galleries/${gallery.id}/nfts`,
+      const response = await instance.post(
+        `/galleries/${gallery.id}/nfts`,
         formData
       );
       this.nfts.push(response.data);
@@ -50,10 +52,7 @@ class NftStore {
       const formData = new FormData();
       for (const key in updateNft) formData.append(key, updateNft[key]);
 
-      const response = await axios.put(
-        `http://localhost:8000/nfts/${updateNft.id}`,
-        formData
-      );
+      const response = await instance.put(`/nfts/${updateNft.id}`, formData);
       const nft = this.nfts.find((nft) => nft.id === response.data.id);
       // nft.slug = slugify(updateNft.name);
       // nft.name = updateNft.name;

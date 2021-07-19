@@ -1,6 +1,8 @@
-// import nftData from "../data";
+//library imports
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+//components
+import instance from "./instance";
+
 class GalleryStore {
   galleries = [];
   loading = true;
@@ -10,7 +12,7 @@ class GalleryStore {
   }
   fetchGalleries = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/galleries");
+      const res = await instance.get("/galleries");
       this.galleries = res.data;
       this.loading = false;
     } catch (error) {
@@ -23,10 +25,7 @@ class GalleryStore {
       const formData = new FormData();
       for (const key in newGallery) formData.append(key, newGallery[key]);
 
-      const response = await axios.post(
-        "http://localhost:8000/galleries",
-        formData
-      );
+      const response = await instance.post("/galleries", formData);
       response.data.nfts = [];
       this.galleries.push(response.data);
     } catch (error) {

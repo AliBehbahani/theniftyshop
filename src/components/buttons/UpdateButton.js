@@ -1,6 +1,10 @@
+//library imports
 import { useState } from "react";
-import { UpdateButtonStyled } from "../../styles";
+//components
 import NftModal from "../modals/NftModal";
+//styles
+import { UpdateButtonStyled } from "../../styles";
+
 const UpdateButton = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 

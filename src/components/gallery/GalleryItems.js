@@ -1,6 +1,9 @@
-import { GalleryImages } from "../styles";
+//library imports
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
+//styles
+import { GalleryImages } from "../../styles";
+
 const GalleryItems = ({ gallery }) => {
   return (
     <div>

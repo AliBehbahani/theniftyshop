@@ -1,4 +1,6 @@
+//library imports
 import { useState } from "react";
+//components
 import SignupModal from "../modals/SignupModal";
 
 const SignupButton = () => {
