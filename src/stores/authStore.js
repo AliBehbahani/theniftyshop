@@ -6,32 +6,29 @@ import instance from "./instance";
 
 class AuthStore {
   user = null;
+
   constructor() {
     makeAutoObservable(this);
   }
 
   signup = async (newUser) => {
     try {
-      const response = await instance.post(
-        "http://localhost:8000/signup",
-        newUser
-      );
+      const response = await instance.post("/signup", newUser);
       this.setUser(response.data.token);
     } catch (error) {
       console.error("userCreate:", error);
     }
   };
+
   signin = async (userData) => {
     try {
-      const response = await instance.post(
-        "http://localhost:8000/signin",
-        userData
-      );
+      const response = await instance.post("/signin", userData);
       this.setUser(response.data.token);
     } catch (error) {
       console.error("userSignin:", error);
     }
   };
+
   setUser = (token) => {
     localStorage.setItem("userToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -43,6 +40,7 @@ class AuthStore {
     localStorage.removeItem("usertoken");
     this.user = null;
   };
+
   checkToken = () => {
     const token = localStorage.getItem("userToken");
     if (token) {

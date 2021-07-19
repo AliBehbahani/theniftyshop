@@ -12,7 +12,7 @@ import { DetailWrapper } from "../../styles";
 const NftDetail = () => {
   const nftSlug = useParams().nftSlug;
   const nft = nftStore.nfts.find((nft) => nft.slug === nftSlug);
-  if (!nft) return <Redirect to="/products" />;
+  if (!nft) return <Redirect to="/nfts" />;
 
   return (
     <div>
@@ -24,7 +24,7 @@ const NftDetail = () => {
         <p>{nft.name}</p>
         <p>{nft.price}</p>
         <p>{nft.description}</p>
-        <Link to="/products">Back</Link>
+        <Link to="/nfts">Back</Link>
         <DeleteButton nftId={nft.id} />
       </DetailWrapper>
     </div>

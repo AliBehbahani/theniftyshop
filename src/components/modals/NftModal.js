@@ -18,6 +18,9 @@ const NftModal = (props) => {
   const handleChange = (event) => {
     setNft({ ...nft, [event.target.name]: event.target.value });
   };
+  const handleImage = (event) => {
+    setNft({ ...nft, image: event.target.files[0] });
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     props.oldNft
@@ -27,9 +30,6 @@ const NftModal = (props) => {
     props.closeModal();
   };
 
-  const handleImage = (event) => {
-    setNft({ ...nft, image: event.target.files[0] });
-  };
   return (
     <div>
       <Modal

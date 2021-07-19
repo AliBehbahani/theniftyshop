@@ -1,17 +1,16 @@
-import "./App.css";
-
-import NavBar from "./components/NavBar";
-
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./styles";
+//library imports
 import { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { Helmet } from "react-helmet";
+import { observer } from "mobx-react";
+//components
+import NavBar from "./components/NavBar";
 import Routes from "./components/Routes";
-
+//stores
 import galleryStore from "./stores/galleryStore";
 import nftStore from "./stores/nftStore";
-
-import { observer } from "mobx-react";
-import { Helmet } from "react-helmet";
+//styles
+import { GlobalStyle } from "./styles";
 
 const theme = {
   light: {
@@ -25,6 +24,7 @@ const theme = {
     red: "red",
   },
 };
+
 function App() {
   const [currentTheme, setCurrentTheme] = useState("dark");
 

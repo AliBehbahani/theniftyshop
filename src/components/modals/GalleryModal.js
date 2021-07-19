@@ -12,15 +12,17 @@ const GalleryModal = (props) => {
   const handleChange = (event) => {
     setGallery({ ...gallery, [event.target.name]: event.target.value });
   };
+
+  const handleImage = (event) => {
+    setGallery({ ...gallery, image: event.target.files[0] });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     galleryStore.galleryCreate(gallery);
     props.closeModal();
   };
 
-  const handleImage = (event) => {
-    setGallery({ ...gallery, image: event.target.files[0] });
-  };
   return (
     <div>
       <Modal

@@ -1,8 +1,9 @@
 //library imports
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
 //components
 import instance from "./instance";
+//stores
+import galleryStore from "./galleryStore";
 
 class NftStore {
   nfts = [];
@@ -23,9 +24,11 @@ class NftStore {
 
   nftDelete = async (nftId) => {
     try {
+      galleryStore.loading = true;
       await instance.delete(`/nfts/${nftId}`);
       const undeletedNfts = this.nfts.filter((nft) => nft.id !== nftId);
       this.nfts = undeletedNfts;
+      galleryStore.fetchGalleries();
     } catch (error) {
       console.error("deleteNfts:", error);
     }
