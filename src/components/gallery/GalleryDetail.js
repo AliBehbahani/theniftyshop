@@ -7,7 +7,7 @@ import NftList from "../nft/NftList";
 import nftStore from "../../stores/nftStore";
 import galleryStore from "../../stores/galleryStore";
 //styles
-import { DetailWrapper } from "../../styles";
+import { GalleryDetailWrapper } from "../../styles";
 
 const GalleryDetail = () => {
   const { gallerySlug } = useParams();
@@ -17,10 +17,10 @@ const GalleryDetail = () => {
   const nfts = gallery.nfts.map((nft) => nftStore.getNftById(nft.id));
   return (
     <div>
-      <DetailWrapper>
+      <GalleryDetailWrapper>
         <h2>{gallery.name}</h2>
         <img src={gallery.image} alt={gallery.name} />
-      </DetailWrapper>
+      </GalleryDetailWrapper>
       <NftList nfts={nfts} gallery={gallery} />
     </div>
   );

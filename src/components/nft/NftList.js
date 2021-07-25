@@ -9,7 +9,7 @@ import NftModal from "../modals/NftModal";
 //stores
 import authStore from "../../stores/authStore";
 //styles
-import { NftWrapper, AddButtonStyled } from "../../styles";
+import { AddButtonStyled, ListWrapper } from "../../styles";
 
 const NftList = ({ nfts, gallery }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +29,12 @@ const NftList = ({ nfts, gallery }) => {
         <title>Products</title>
       </Helmet>
       <div>
-        <SearchBar setQuery={setQuery} />
-        {authStore.user && <AddButtonStyled size="3em" onClick={openModal} />}
+        <div>
+          <SearchBar setQuery={setQuery} />
+          {authStore.user && <AddButtonStyled size="3em" onClick={openModal} />}
+        </div>
         <NftModal closeModal={closeModal} isOpen={isOpen} gallery={gallery} />
-        <NftWrapper>{nftList}</NftWrapper>
+        <ListWrapper>{nftList}</ListWrapper>
       </div>
     </div>
   );

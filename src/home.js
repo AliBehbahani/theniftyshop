@@ -6,8 +6,8 @@ const HomePage = () => {
       <Title>The NiFTy Shop</Title>
       <Description>your go to NFT shop</Description>
       <ShopImage
-        alt="nft"
-        src="https://www.forbes.com/advisor/wp-content/uploads/2021/04/NFT.jpeg-900x510.jpg"
+        alt="mainNftImage"
+        src="https://wallpaperaccess.com/full/42337.jpg"
       />
     </div>
   );

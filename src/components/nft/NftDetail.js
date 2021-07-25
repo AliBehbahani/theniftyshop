@@ -7,7 +7,12 @@ import DeleteButton from "../buttons/DeleteButton";
 //stores
 import nftStore from "../../stores/nftStore";
 //styles
-import { DetailWrapper } from "../../styles";
+import {
+  BackButton,
+  DetailWrapper,
+  ImageDetailWrapper,
+  ButtonWrapper,
+} from "../../styles";
 
 const NftDetail = () => {
   const nftSlug = useParams().nftSlug;
@@ -19,13 +24,17 @@ const NftDetail = () => {
       <Helmet>
         <title>Detail Page</title>
       </Helmet>
-      <DetailWrapper>
+      <ImageDetailWrapper>
         <img src={nft.image} />
-        <p>{nft.name}</p>
-        <p>{nft.price}</p>
+      </ImageDetailWrapper>
+      <DetailWrapper>
+        <p className="firstP">{nft.name}</p>
+        <p>{nft.price} $</p>
         <p>{nft.description}</p>
-        <Link to="/nfts">Back</Link>
-        <DeleteButton nftId={nft.id} />
+        <ButtonWrapper>
+          <BackButton to="/nfts">Back</BackButton>
+          <DeleteButton className="deleteButtonDetail" nftId={nft.id} />
+        </ButtonWrapper>
       </DetailWrapper>
     </div>
   );

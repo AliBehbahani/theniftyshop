@@ -14,14 +14,14 @@ import { GlobalStyle } from "./styles";
 
 const theme = {
   light: {
-    backgroundColor: "white",
     mainColor: "black",
-    red: "red",
+    backgroundColor: "#e4daff",
+    accentColor: "#b49aff",
   },
   dark: {
-    backgroundColor: "black",
     mainColor: "white",
-    red: "red",
+    backgroundColor: "#4B28A9",
+    accentColor: "#3D1F94",
   },
 };
 

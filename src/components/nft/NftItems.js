@@ -20,7 +20,7 @@ const NftItem = (props) => {
         />
       </Link>
 
-      <p className="nftDescription">{props.nft.name}</p>
+      <p className="nftName">{props.nft.name}</p>
 
       <p className="price">{props.nft.price}$</p>
       {authStore.user && (

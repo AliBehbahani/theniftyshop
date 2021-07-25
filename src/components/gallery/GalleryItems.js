@@ -2,17 +2,16 @@
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 //styles
-import { GalleryImages } from "../../styles";
+import { GalleryWrapper } from "../../styles";
 
 const GalleryItems = ({ gallery }) => {
   return (
-    <div>
+    <GalleryWrapper>
       <Link to={`/galleries/${gallery.slug}`}>
-        <GalleryImages src={gallery.image} alt={gallery.name} />
+        <img src={gallery.image} alt={gallery.name} />
       </Link>
-
       <p>{gallery.name}</p>
-    </div>
+    </GalleryWrapper>
   );
 };
 
